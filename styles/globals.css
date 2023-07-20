@@ -168,3 +168,14 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.new_gradient {
+  background: linear-gradient(to right bottom, #fcb045, #fd9d33, #fd8825, #fe711b, #fe5618, #ff412f, #fe2941, #f90051, #eb0070, #d3008c, #b123a4, #833ab4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+
+
