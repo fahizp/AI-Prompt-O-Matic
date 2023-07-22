@@ -38,15 +38,28 @@ const Feed = () => {
   }, []);
 
   const filterPrompts = (searchtext) => {
-
+    const regex = new RegExp(searchtext,"i");
+    return allPosts.filter((item) => regex.test(item.creator.username) || regex.test(item.tag) || regex.test(item.prompt));
   };
 
   const handleSearchChange = (e) => {
+    clearTimeout(searchTimeout);
+    setSearchText(e.target.value);
+
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResult = filterPrompts(e.target.value);
+        setSearchedResults(searchResult)
+      },500)
+    );
 
   };
 
   const handleTagClick = (tagName) => {
+    setSearchText(tagName);
 
+    const searchResult = filterPrompts(tagName);
+    setSearchedResults(searchResult);
   };
 
   return (
